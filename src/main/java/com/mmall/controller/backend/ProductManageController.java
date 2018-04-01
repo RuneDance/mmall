@@ -102,6 +102,15 @@ public class ProductManageController {
         }
     }
 
+    /**
+     * 后台产品搜索
+     * @param session
+     * @param productName
+     * @param productId
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @RequestMapping("search.do")
     @ResponseBody
     public ServerResponse productSearch(HttpSession session,String productName,Integer productId, @RequestParam(value = "pageNum",defaultValue = "1") int pageNum,@RequestParam(value = "pageSize",defaultValue = "10") int pageSize){
@@ -118,6 +127,14 @@ public class ProductManageController {
         }
     }
 
+
+    /**
+     * 后台商品图片的springMVC上传
+     * @param session
+     * @param file
+     * @param request
+     * @return
+     */
     @RequestMapping("upload.do")
     @ResponseBody
     public ServerResponse upload(HttpSession session,@RequestParam(value = "upload_file",required = false) MultipartFile file,HttpServletRequest request){
@@ -139,7 +156,14 @@ public class ProductManageController {
         }
     }
 
-
+    /**
+     * 富文本图片上传ftp服务器文件
+     * @param session
+     * @param file
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping("richtext_img_upload.do")
     @ResponseBody
     public Map richtextImgUpload(HttpSession session, @RequestParam(value = "upload_file",required = false) MultipartFile file, HttpServletRequest request, HttpServletResponse response){
