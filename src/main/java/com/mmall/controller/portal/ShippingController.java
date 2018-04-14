@@ -27,7 +27,7 @@ public class ShippingController {
     private IShippingService iShippingService;
 
     /**
-     * 增加地址
+     * 新增地址
      *
      * @param session
      * @param shipping
@@ -61,7 +61,7 @@ public class ShippingController {
     }
 
     /**
-     * 更改地址
+     * 更新地址
      *
      * @param session
      * @param shipping
@@ -95,7 +95,7 @@ public class ShippingController {
     }
 
     /**
-     * 地址详情
+     * 分页列表
      *
      * @param pageNum
      * @param pageSize
