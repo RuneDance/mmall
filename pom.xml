@@ -240,7 +240,6 @@
     </dependency>
 
     <!-- 二期新增的 -->
-
     <dependency>
       <groupId>redis.clients</groupId>
       <artifactId>jedis</artifactId>
