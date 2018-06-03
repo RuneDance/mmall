@@ -118,7 +118,7 @@ public class RedisPoolUtil {
         return result;
     }
 
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         Jedis jedis = RedisPool.getJedis();
 
         RedisPoolUtil.set("keyTest", "value");
@@ -133,7 +133,7 @@ public class RedisPoolUtil {
 
         System.out.println("end");
 
-    }*/
+    }
 
 
 }
