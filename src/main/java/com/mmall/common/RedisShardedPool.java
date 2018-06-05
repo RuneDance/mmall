@@ -11,6 +11,9 @@ import redis.clients.util.Sharded;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * redis分片连接池
+ */
 public class RedisShardedPool {
     private static ShardedJedisPool pool;//sharded jedis连接池
     private static Integer maxTotal = Integer.parseInt(PropertiesUtil.getProperty("redis.max.total", "20")); //最大连接数
@@ -39,10 +42,12 @@ public class RedisShardedPool {
         config.setBlockWhenExhausted(true);//连接耗尽的时候，是否阻塞，false会抛出异常，true阻塞直到超时。默认为true。
 
         JedisShardInfo info1 = new JedisShardInfo(redis1Ip, redis1Port, 1000 * 2);
-
+        //如果有密码
+        //info1.setPassword("");
         JedisShardInfo info2 = new JedisShardInfo(redis2Ip, redis2Port, 1000 * 2);
-
-        List<JedisShardInfo> jedisShardInfoList = new ArrayList<JedisShardInfo>(2);
+        //如果有密码
+        //info2.setPassword("");
+        List<JedisShardInfo> jedisShardInfoList = new ArrayList<>(2);
 
         jedisShardInfoList.add(info1);
         jedisShardInfoList.add(info2);
@@ -76,7 +81,6 @@ public class RedisShardedPool {
             jedis.set("key" + i, "value" + i);
         }
         returnResource(jedis);
-
 //        pool.destroy();//临时调用，销毁连接池中的所有连接
         System.out.println("program is end");
 

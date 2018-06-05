@@ -4,6 +4,9 @@ import com.mmall.common.RedisShardedPool;
 import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.ShardedJedis;
 
+/**
+ * redis分片连接池工具类
+ */
 @Slf4j
 public class RedisShardedPoolUtil {
 
