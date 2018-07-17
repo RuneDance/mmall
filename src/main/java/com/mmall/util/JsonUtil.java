@@ -1,6 +1,5 @@
 package com.mmall.util;
 
-import com.mmall.pojo.TestPojo;
 import com.mmall.pojo.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -99,6 +98,7 @@ public class JsonUtil {
 
     /**
      * 指定泛型参数序列化方法
+     *
      * @param str
      * @param typeReference
      * @param <T>
@@ -118,6 +118,7 @@ public class JsonUtil {
 
     /**
      * 指定多个泛型参数序列化方法
+     *
      * @param str
      * @param collectionClass
      * @param elementClasses
@@ -146,7 +147,7 @@ public class JsonUtil {
         //System.out.println(str);
         //System.out.println(strPretty);
 
-        User obj = JsonUtil.string2Obj(str,User.class);
+        User obj = JsonUtil.string2Obj(str, User.class);
         //System.out.println("end");
 
         List<User> userList = new ArrayList<>();
@@ -158,8 +159,9 @@ public class JsonUtil {
         //List<User> objList = JsonUtil.string2Obj(userListStr,List.class);
         //System.out.println(objList);
 
-        List<User> userListObj1 = JsonUtil.string2Obj(userListStr, new TypeReference<List<User>>() {});
-        List<User> userListObj2 = JsonUtil.string2Obj(userListStr, List.class,User.class);
+        List<User> userListObj1 = JsonUtil.string2Obj(userListStr, new TypeReference<List<User>>() {
+        });
+        List<User> userListObj2 = JsonUtil.string2Obj(userListStr, List.class, User.class);
         System.out.println(userListObj2);
     }
 
