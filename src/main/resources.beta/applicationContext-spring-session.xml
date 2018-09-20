@@ -3,7 +3,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
     <bean id="redisHttpSessionConfiguration"
           class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
         <property name="maxInactiveIntervalInSeconds" value="50"/>
@@ -26,6 +25,5 @@
         <property name="port" value="6379"/>
         <property name="poolConfig" ref="jedisPoolConfig"/>
     </bean>
-
 
 </beans>

@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by v on 2018/1/7.
+ * FTP工具类
  */
 public class FTPUtil {
 
@@ -64,9 +64,7 @@ public class FTPUtil {
         return uploaded;
     }
 
-
     private boolean connectServer(String ip, int port, String user, String pwd) {
-
         boolean isSuccess = false;
         ftpClient = new FTPClient();
         try {
@@ -77,7 +75,6 @@ public class FTPUtil {
         }
         return isSuccess;
     }
-
 
     private String ip;
     private int port;

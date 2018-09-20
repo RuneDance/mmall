@@ -1,12 +1,8 @@
 package com.mmall.vo;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
-/**
- * Created by geely
- */
 public class OrderVo {
 
     private Long orderNo;
@@ -16,10 +12,10 @@ public class OrderVo {
     private Integer paymentType;
 
     private String paymentTypeDesc;
+
     private Integer postage;
 
     private Integer status;
-
 
     private String statusDesc;
 

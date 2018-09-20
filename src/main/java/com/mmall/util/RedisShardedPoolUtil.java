@@ -32,7 +32,14 @@ public class RedisShardedPoolUtil {
         return result;
     }
 
-    //exTime的单位是秒
+    /**
+     * 根据key设置一个有效期的value，单位是秒
+     *
+     * @param key
+     * @param value
+     * @param exTime
+     * @return
+     */
     public static String setEx(String key, String value, int exTime) {
         ShardedJedis jedis = null;
         String result = null;
@@ -48,6 +55,13 @@ public class RedisShardedPoolUtil {
         return result;
     }
 
+    /**
+     * 根据key设置value
+     *
+     * @param key
+     * @param value
+     * @return
+     */
     public static String set(String key, String value) {
         ShardedJedis jedis = null;
         String result = null;
@@ -80,6 +94,12 @@ public class RedisShardedPoolUtil {
         return result;
     }
 
+    /**
+     * 根据key获取value
+     *
+     * @param key
+     * @return
+     */
     public static String get(String key) {
         ShardedJedis jedis = null;
         String result = null;
@@ -95,6 +115,12 @@ public class RedisShardedPoolUtil {
         return result;
     }
 
+    /**
+     * 根据key删除value
+     *
+     * @param key
+     * @return
+     */
     public static Long del(String key) {
         ShardedJedis jedis = null;
         Long result = null;
@@ -113,7 +139,6 @@ public class RedisShardedPoolUtil {
     public static Long setnx(String key, String value) {
         ShardedJedis jedis = null;
         Long result = null;
-
         try {
             jedis = RedisShardedPool.getJedis();
             result = jedis.setnx(key, value);
@@ -125,29 +150,4 @@ public class RedisShardedPoolUtil {
         RedisShardedPool.returnResource(jedis);
         return result;
     }
-
-
-    public static void main(String[] args) {
-        ShardedJedis jedis = RedisShardedPool.getJedis();
-
-        RedisPoolUtil.set("keyTest", "value");
-
-        String value = RedisPoolUtil.get("keyTest");
-
-        RedisPoolUtil.setEx("keyex", "valueex", 60 * 10);
-
-        RedisPoolUtil.expire("keyTest", 60 * 20);
-
-        RedisPoolUtil.del("keyTest");
-
-
-        String aaa = RedisPoolUtil.get(null);
-        System.out.println(aaa);
-
-        System.out.println("end");
-
-
-    }
-
-
 }

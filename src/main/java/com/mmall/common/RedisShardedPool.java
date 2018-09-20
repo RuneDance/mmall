@@ -25,8 +25,11 @@ public class RedisShardedPool {
 
     private static String redis1Ip = PropertiesUtil.getProperty("redis1.ip");
     private static Integer redis1Port = Integer.parseInt(PropertiesUtil.getProperty("redis1.port"));
+    private static String redis1Pwd = PropertiesUtil.getProperty("redis1.password");
+
     private static String redis2Ip = PropertiesUtil.getProperty("redis2.ip");
     private static Integer redis2Port = Integer.parseInt(PropertiesUtil.getProperty("redis2.port"));
+    private static String redis2Pwd = PropertiesUtil.getProperty("redis2.password");
 
 
     private static void initPool() {
@@ -43,10 +46,10 @@ public class RedisShardedPool {
 
         JedisShardInfo info1 = new JedisShardInfo(redis1Ip, redis1Port, 1000 * 2);
         //如果有密码
-        //info1.setPassword("");
+        info1.setPassword(redis1Pwd);
         JedisShardInfo info2 = new JedisShardInfo(redis2Ip, redis2Port, 1000 * 2);
         //如果有密码
-        //info2.setPassword("");
+        info2.setPassword(redis2Pwd);
         List<JedisShardInfo> jedisShardInfoList = new ArrayList<>(2);
 
         jedisShardInfoList.add(info1);

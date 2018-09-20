@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import java.util.Properties;
 
 /**
- * Created by v on 2018/1/7.
+ * Properties工具类
  */
 public class PropertiesUtil {
 
@@ -36,13 +36,10 @@ public class PropertiesUtil {
     }
 
     public static String getProperty(String key, String defaultValue) {
-
         String value = props.getProperty(key.trim());
         if (StringUtils.isBlank(value)) {
             value = defaultValue;
         }
         return value.trim();
     }
-
-
 }

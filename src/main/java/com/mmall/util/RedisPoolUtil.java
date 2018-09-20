@@ -4,9 +4,11 @@ import com.mmall.common.RedisPool;
 import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.Jedis;
 
+/**
+ * RedisPool工具类
+ */
 @Slf4j
 public class RedisPoolUtil {
-
 
     /**
      * 设置key的有效期(单位/秒)
@@ -117,23 +119,4 @@ public class RedisPoolUtil {
         RedisPool.returnResource(jedis);
         return result;
     }
-
-    public static void main(String[] args) {
-        Jedis jedis = RedisPool.getJedis();
-
-        RedisPoolUtil.set("keyTest", "value");
-
-        String value = RedisPoolUtil.get("keyTest");
-
-        RedisPoolUtil.setEx("keyex", "valueex", 60 * 10);
-
-        RedisPoolUtil.expire("keyTest", 60 * 20);
-
-        RedisPoolUtil.del("keyTest");
-
-        System.out.println("end");
-
-    }
-
-
 }
