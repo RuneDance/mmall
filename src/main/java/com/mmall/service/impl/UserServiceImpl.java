@@ -32,17 +32,14 @@ public class UserServiceImpl implements IUserService {
         if (resultCount == 0) {
             return ServerResponse.createByErrorMessage("用户名不存在");
         }
-
         String md5Password = MD5Util.MD5EncodeUtf8(password);
         User user = userMapper.selectLogin(username, md5Password);
         if (user == null) {
             return ServerResponse.createByErrorMessage("密码错误");
         }
-
         user.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
         return ServerResponse.createBySuccess("登录成功", user);
     }
-
 
     /**
      * 用户注册
@@ -157,7 +154,6 @@ public class UserServiceImpl implements IUserService {
         if (org.apache.commons.lang3.StringUtils.isBlank(token)) {
             return ServerResponse.createByErrorMessage("token无效或者过期");
         }
-
         if (org.apache.commons.lang3.StringUtils.equals(forgetToken, token)) {
             String md5Password = MD5Util.MD5EncodeUtf8(passwordNew);
             int rowCount = userMapper.updatePasswordByUsername(username, md5Password);
@@ -185,7 +181,6 @@ public class UserServiceImpl implements IUserService {
         if (resultCount == 0) {
             return ServerResponse.createByErrorMessage("旧密码错误");
         }
-
         user.setPassword(MD5Util.MD5EncodeUtf8(passwordNew));
         int updateCount = userMapper.updateByPrimaryKeySelective(user);
         if (updateCount > 0) {
@@ -238,7 +233,6 @@ public class UserServiceImpl implements IUserService {
 
     }
 
-
     //backend
 
     /**
@@ -253,6 +247,4 @@ public class UserServiceImpl implements IUserService {
         }
         return ServerResponse.createByError();
     }
-
-
 }

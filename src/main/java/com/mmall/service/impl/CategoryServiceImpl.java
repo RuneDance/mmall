@@ -98,8 +98,6 @@ public class CategoryServiceImpl implements ICategoryService {
     public ServerResponse<List<Integer>> selectCategoryAndChildrenById(Integer categoryId) {
         Set<Category> categorySet = Sets.newHashSet();
         findChildCategory(categorySet, categoryId);
-
-
         List<Integer> categoryIdList = Lists.newArrayList();
         if (categoryId != null) {
             for (Category categoryItem : categorySet) {
@@ -108,7 +106,6 @@ public class CategoryServiceImpl implements ICategoryService {
         }
         return ServerResponse.createBySuccess(categoryIdList);
     }
-
 
     /**
      * 递归算法,算出子节点
@@ -129,6 +126,4 @@ public class CategoryServiceImpl implements ICategoryService {
         }
         return categorySet;
     }
-
-
 }
